@@ -15,17 +15,11 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Azure para estudiantes(1)(59b69195-b088-4421-b850-5eb42959301d)'
     appType: 'webApp'
     appName: 'myappHelloword'
-    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    package: '$(build.artifactStagingDirectory).zip'
     deploymentMethod: 'auto'
