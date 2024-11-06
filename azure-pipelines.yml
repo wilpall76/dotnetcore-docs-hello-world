@@ -27,5 +27,5 @@ steps:
     azureSubscription: 'Azure para estudiantes(1)(59b69195-b088-4421-b850-5eb42959301d)'
     appType: 'webApp'
     appName: 'myappHelloword'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)/*.zip'
     deploymentMethod: 'auto'
